@@ -37,8 +37,8 @@ serve(async (req) => {
     }
 
     // Create order in Supabase
-    const supabaseUrl = 'https://rhbpyacohntcqlszgvle.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJoYnB5YWNvaG50Y3Fsc3pndmxlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkyNDA5MjAsImV4cCI6MjA2NDgxNjkyMH0.MSJEKJsIkZs9SKHG3K6PQAJOeFsWrIcUum7BmWXXnYE';
+    const supabaseUrl = 'https://ndqvzcuziucoitfgpdzk.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5kcXZ6Y3V6aXVjb2l0ZmdwZHprIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkzMDAzODMsImV4cCI6MjA2NDg3NjM4M30.t4HmB0Ma5mWXxxZOz0dl1g_dJhPebgCEHIGlxhjUjkU';
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     const { data: order, error: orderError } = await supabase

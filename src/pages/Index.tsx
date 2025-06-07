@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useProducts } from '@/hooks/useProducts';
 import { useNavigate } from 'react-router-dom';
@@ -12,11 +11,8 @@ import { Star, Award, Shield, Clock } from 'lucide-react';
 const Index = () => {
   const navigate = useNavigate();
   const { data: dbProducts = [], isLoading, error } = useProducts();
-  
-  // Use database products if available, otherwise fall back to static data
+
   const products = dbProducts.length > 0 ? dbProducts : fallbackProducts;
-  
-  // Get featured products (first 3)
   const featuredProducts = products.slice(0, 3);
 
   return (
@@ -26,16 +22,16 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Timeless <span className="text-luxury-gold">Elegance</span>
+              Crafted for <span className="text-luxury-gold">Comfort & Style</span>
             </h1>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Discover our curated collection of luxury timepieces that define sophistication and precision.
+              Explore our high-quality, custom-made apparel designed to elevate your brand and comfort.
             </p>
             <Button 
               onClick={() => navigate('/products')}
               className="bg-luxury-gold hover:bg-luxury-gold/90 text-navy-deep font-semibold px-8 py-3 text-lg"
             >
-              Explore Collection
+              Browse Our Collection
             </Button>
           </div>
         </div>
@@ -49,22 +45,22 @@ const Index = () => {
               <div className="w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="w-8 h-8 text-navy-deep" />
               </div>
-              <h3 className="text-xl font-semibold text-navy-deep mb-2">Premium Quality</h3>
-              <p className="text-gray-600">Handcrafted timepieces with exceptional attention to detail</p>
+              <h3 className="text-xl font-semibold text-navy-deep mb-2">Superior Craftsmanship</h3>
+              <p className="text-gray-600">Tailored garments made with precision and care for every detail.</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-navy-deep" />
               </div>
-              <h3 className="text-xl font-semibold text-navy-deep mb-2">Authentic Guarantee</h3>
-              <p className="text-gray-600">100% authentic watches with manufacturer warranty</p>
+              <h3 className="text-xl font-semibold text-navy-deep mb-2">Trusted Quality</h3>
+              <p className="text-gray-600">Premium materials and quality assurance for long-lasting apparel.</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-luxury-gold rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-8 h-8 text-navy-deep" />
               </div>
-              <h3 className="text-xl font-semibold text-navy-deep mb-2">Lifetime Service</h3>
-              <p className="text-gray-600">Comprehensive after-sales service and maintenance</p>
+              <h3 className="text-xl font-semibold text-navy-deep mb-2">On-Time Delivery</h3>
+              <p className="text-gray-600">Reliable timelines to meet your business and seasonal demands.</p>
             </div>
           </div>
         </div>
@@ -74,9 +70,9 @@ const Index = () => {
       <div className="bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-navy-deep mb-4">Featured Collection</h2>
+            <h2 className="text-3xl font-bold text-navy-deep mb-4">Featured Apparel</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Handpicked timepieces that represent the pinnacle of watchmaking excellence
+              Our best-selling clothing pieces that combine durability, comfort, and aesthetic appeal.
             </p>
           </div>
 
@@ -84,7 +80,7 @@ const Index = () => {
             <div className="text-center">Loading featured products...</div>
           ) : error ? (
             <div className="text-center text-red-600">
-              Unable to load products from database, showing sample products.
+              Unable to load products from database, showing sample items.
             </div>
           ) : null}
 
@@ -100,7 +96,7 @@ const Index = () => {
               variant="outline" 
               className="border-navy-deep text-navy-deep hover:bg-navy-deep hover:text-white"
             >
-              View All Products
+              View Full Catalog
             </Button>
           </div>
         </div>
@@ -110,7 +106,7 @@ const Index = () => {
       <div className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-navy-deep mb-4">What Our Customers Say</h2>
+            <h2 className="text-3xl font-bold text-navy-deep mb-4">Client Testimonials</h2>
             <div className="flex items-center justify-center space-x-1 mb-4">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
