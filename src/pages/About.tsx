@@ -1,34 +1,35 @@
+
 import React from 'react';
 import { Award, Users, Globe, Heart } from 'lucide-react';
 
 const About = () => {
   const stats = [
     { label: 'Years of Excellence', value: '25+' },
-    { label: 'Happy Clients', value: '10,000+' },
-    { label: 'Brands Served', value: '50+' },
-    { label: 'Countries Exported', value: '15+' },
+    { label: 'Happy Customers', value: '10,000+' },
+    { label: 'Luxury Brands', value: '50+' },
+    { label: 'Countries Served', value: '15+' },
   ];
 
   const values = [
     {
       icon: Award,
-      title: 'Quality',
-      description: 'We uphold the highest standards in every garment we manufacture, ensuring flawless stitching and premium materials.'
+      title: 'Excellence',
+      description: 'We maintain the highest standards in every timepiece we offer, ensuring each watch meets our rigorous quality criteria.'
     },
     {
       icon: Users,
       title: 'Trust',
-      description: 'Backed by decades of reliability, we foster long-term relationships through consistent, transparent production services.'
+      description: 'Built on decades of customer satisfaction, we pride ourselves on transparent business practices and authentic products.'
     },
     {
       icon: Globe,
-      title: 'Innovation',
-      description: 'Blending traditional tailoring techniques with modern machinery, we create apparel that meets today’s global demands.'
+      title: 'Heritage',
+      description: 'Our passion for horological artistry spans generations, connecting traditional craftsmanship with modern innovation.'
     },
     {
       icon: Heart,
-      title: 'Commitment',
-      description: 'From design to delivery, we go the extra mile to meet timelines and exceed client expectations.'
+      title: 'Service',
+      description: 'From purchase to after-sales support, we provide personalized service that exceeds expectations.'
     }
   ];
 
@@ -38,10 +39,11 @@ const About = () => {
       <section className="bg-navy-deep text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Our <span className="text-luxury-gold">Journey</span>
+            Our <span className="text-luxury-gold">Story</span>
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            For over 25 years, Elite Garments has been India’s trusted name in apparel manufacturing — known for premium quality, ethical practices, and timely delivery.
+            For over 25 years, TimePiece Boutique has been India's premier destination for luxury timepieces, 
+            combining traditional horological expertise with modern retail excellence.
           </p>
         </div>
       </section>
@@ -67,23 +69,28 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-navy-deep mb-6">Stitching Legacy Since 1999</h2>
+              <h2 className="text-3xl font-bold text-navy-deep mb-6">A Legacy of Time</h2>
               <div className="space-y-4 text-gray-700">
                 <p>
-                  Founded by textile visionary Rajesh Gupta, Elite Garments started as a small tailoring unit in Mumbai. With a passion for fabric and fit, we’ve grown into a leading manufacturer serving global fashion and corporate brands.
+                  Founded in 1999 by master horologist Rajesh Gupta, TimePiece Boutique began as a small 
+                  workshop in Mumbai's jewelry district. What started as a passion for mechanical timepieces 
+                  has evolved into India's most trusted luxury watch retailer.
                 </p>
                 <p>
-                  Our success is rooted in three values: quality, reliability, and service. Every fabric roll is inspected, every stitch is scrutinized — we deliver nothing less than excellence.
+                  Our journey has been guided by three core principles: authenticity, excellence, and service. 
+                  Every timepiece in our collection is carefully selected and authenticated by our team of 
+                  certified horologists, ensuring our customers receive only the finest watches.
                 </p>
                 <p>
-                  From startups to legacy brands, we produce customized apparel solutions — uniforms, casual wear, sportswear, and more — tailored to your exact needs.
+                  Today, we proudly serve customers across India and internationally, offering an unparalleled 
+                  selection of luxury timepieces from the world's most prestigious manufacturers.
                 </p>
               </div>
             </div>
             <div className="aspect-square rounded-lg overflow-hidden">
               <img 
                 src="/placeholder.svg" 
-                alt="Our factory" 
+                alt="Our workshop" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -95,9 +102,9 @@ const About = () => {
       <section className="py-16 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-navy-deep mb-4">Our Core Values</h2>
+            <h2 className="text-3xl font-bold text-navy-deep mb-4">Our Values</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              We believe great clothing begins with strong values — our dedication shapes every fabric we cut and every client we serve.
+              The principles that guide everything we do, from curating our collection to serving our customers.
             </p>
           </div>
           
@@ -121,15 +128,15 @@ const About = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-navy-deep mb-4">Meet Our Team</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              From designers to production leads, our team brings passion and precision to every project.
+              Our passionate team of horologists and customer service specialists are here to help you find the perfect timepiece.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { name: 'Rajesh Gupta', role: 'Founder & Head of Production', image: '/placeholder.svg' },
-              { name: 'Priya Sharma', role: 'Client Relations Manager', image: '/placeholder.svg' },
-              { name: 'Amit Patel', role: 'Lead Pattern Maker', image: '/placeholder.svg' }
+              { name: 'Rajesh Gupta', role: 'Founder & Master Horologist', image: '/placeholder.svg' },
+              { name: 'Priya Sharma', role: 'Head of Customer Experience', image: '/placeholder.svg' },
+              { name: 'Amit Patel', role: 'Technical Specialist', image: '/placeholder.svg' }
             ].map((member, index) => (
               <div key={index} className="text-center">
                 <div className="aspect-square rounded-lg overflow-hidden mb-4 bg-gray-200">

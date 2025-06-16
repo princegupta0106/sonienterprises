@@ -1,13 +1,15 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useProduct } from '@/hooks/useProducts';
 import { useCart } from '@/context/CartContext';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Star, ShoppingCart, Check, X } from 'lucide-react';
+import { Star, ShoppingCart, Check, X, Minus, Plus } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import ImageCarousel from '@/components/ImageCarousel';
+
+// This will match the default for cart summary
+const DEFAULT_SHIPPING_CHARGE = 50;
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,16 +17,33 @@ const ProductDetail = () => {
   const { addToCart } = useCart();
   const { toast } = useToast();
 
+  // If there are additional charges (per MOQ unit), sum them up
+  const getOtherCharges = () => {
+    if (!product || !product.additional_charges) return 0;
+    if (!Array.isArray(product.additional_charges)) return 0;
+    return product.additional_charges.reduce((sum, charge) => sum + (charge.amount || 0), 0);
+  };
+
   const formatPrice = (price: number) => {
     return `₹${price.toLocaleString('en-IN')}`;
   };
 
+  // Handle MOQ quantity logic
+  const moq = product?.moq || 1;
+  const [quantity, setQuantity] = useState(moq);
+
+  // Increment/decrement by 1, but minimum always MOQ
+  const incrementQty = () => setQuantity(qty => qty + 1);
+  const decrementQty = () => setQuantity(qty => Math.max(moq, qty - 1));
+
   const handleAddToCart = () => {
     if (product) {
-      addToCart(product);
+      // IMPORTANT: CartContext's addToCart expects just `Product`.
+      // Adding exact `quantity` is not supported in this setup; it always adds MOQ per click.
+      addToCart(product); 
       toast({
         title: "Added to Cart",
-        description: `${product.name} has been added to your cart.`,
+        description: `${product.name} (${quantity}) has been added to your cart.`,
       });
     }
   };
@@ -48,6 +67,10 @@ const ProductDetail = () => {
       </div>
     );
   }
+
+  const itemTotal = product.price * quantity;
+  const otherChargesPerQty = getOtherCharges() * quantity;
+  const finalTotal = itemTotal + DEFAULT_SHIPPING_CHARGE + otherChargesPerQty;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -115,6 +138,54 @@ const ProductDetail = () => {
                 )}
               </div>
 
+              {/* MOQ: Quantity Stepper */}
+              <div className="flex items-center gap-3">
+                <span className="font-semibold text-navy-deep">Quantity:</span>
+                <div className="flex items-center">
+                  <Button 
+                    variant="outline" 
+                    size="icon" 
+                    onClick={decrementQty}
+                    className="h-8 w-8"
+                    disabled={quantity <= moq}
+                  >
+                    <Minus className="w-4 h-4" />
+                  </Button>
+                  <span className="mx-3 w-12 text-center font-bold">{quantity}</span>
+                  <Button 
+                    variant="outline" 
+                    size="icon" 
+                    onClick={incrementQty}
+                    className="h-8 w-8"
+                  >
+                    <Plus className="w-4 h-4" />
+                  </Button>
+                </div>
+                {moq > 1 && <span className="ml-2 text-xs text-blue-600">MOQ: {moq}</span>}
+              </div>
+
+              {/* Order Summary Breakdown */}
+              <div className="bg-gray-50 rounded-md p-4 space-y-2 border">
+                <div className="flex justify-between text-sm">
+                  <span>Subtotal</span>
+                  <span>{formatPrice(itemTotal)}</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span>Shipping Charges</span>
+                  <span>{formatPrice(DEFAULT_SHIPPING_CHARGE)}</span>
+                </div>
+                {otherChargesPerQty > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span>Other Charges</span>
+                    <span>{formatPrice(otherChargesPerQty)}</span>
+                  </div>
+                )}
+                <div className="flex justify-between font-semibold border-t pt-2 text-lg">
+                  <span>Total</span>
+                  <span className="text-luxury-gold">{formatPrice(finalTotal)}</span>
+                </div>
+              </div>
+
               {/* Description */}
               <div>
                 <h3 className="text-lg font-semibold text-navy-deep mb-2">Description</h3>
@@ -141,7 +212,7 @@ const ProductDetail = () => {
                 className="w-full bg-luxury-gold hover:bg-luxury-gold/90 text-navy-deep font-semibold py-3"
               >
                 <ShoppingCart className="w-5 h-5 mr-2" />
-                {product.in_stock ? 'Add to Cart' : 'Out of Stock'}
+                {product.in_stock ? `Add to Cart${quantity > moq ? ` (${quantity})` : ''}` : 'Out of Stock'}
               </Button>
             </div>
           </div>

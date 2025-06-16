@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useCreateContactQuery } from '@/hooks/useContactQueries';
 import { Button } from '@/components/ui/button';
@@ -24,7 +25,7 @@ const Help = () => {
       await createContactQuery.mutateAsync(formData);
       toast({
         title: "Message Sent!",
-        description: "Our team will get back to you shortly.",
+        description: "We'll get back to you within 24 hours.",
       });
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
@@ -41,7 +42,7 @@ const Help = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-navy-deep mb-4">Help & Support</h1>
-          <p className="text-lg text-gray-600">We assist with inquiries related to our clothing manufacturing services</p>
+          <p className="text-lg text-gray-600">We're here to help with any questions you might have</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -52,44 +53,48 @@ const Help = () => {
             <div className="space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">What types of clothing do you manufacture?</CardTitle>
+                  <CardTitle className="text-lg">What is your return policy?</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    We specialize in manufacturing a wide range of garments including t-shirts, hoodies, uniforms, sportswear, and custom branded apparel.
+                    We offer a 30-day return policy for all unworn watches in original condition. 
+                    Returns must include all original packaging and documentation.
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">Do you accept bulk orders?</CardTitle>
+                  <CardTitle className="text-lg">Do you provide warranty?</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Yes, we cater to bulk manufacturing for brands, businesses, events, and institutions. Minimum order quantities may apply based on the product type.
+                    Yes, all our watches come with manufacturer warranty ranging from 1-5 years 
+                    depending on the brand and model. Details are provided with each product.
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">Can I customize my clothing designs?</CardTitle>
+                  <CardTitle className="text-lg">How long does shipping take?</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Absolutely! We offer complete customization including fabric selection, size grading, printing, embroidery, labels, tags, and packaging.
+                    Standard shipping takes 3-5 business days within India. Express shipping 
+                    options are available for faster delivery.
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">What is your production time?</CardTitle>
+                  <CardTitle className="text-lg">Are your watches authentic?</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    Our standard turnaround time ranges from 10 to 21 business days depending on the size and complexity of the order.
+                    Absolutely! We are authorized dealers and all our watches come with 
+                    authenticity certificates and original manufacturer warranty.
                   </p>
                 </CardContent>
               </Card>
@@ -168,15 +173,15 @@ const Help = () => {
             <div className="mt-8 space-y-4">
               <div>
                 <h3 className="font-semibold text-navy-deep">Email</h3>
-                <p className="text-gray-600">support@clothingmanufacturer.com</p>
+                <p className="text-gray-600">support@luxurywatchstore.com</p>
               </div>
               <div>
                 <h3 className="font-semibold text-navy-deep">Phone</h3>
                 <p className="text-gray-600">+91 98765 43210</p>
               </div>
               <div>
-                <h3 className="font-semibold text-navy-deep">Working Hours</h3>
-                <p className="text-gray-600">Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                <h3 className="font-semibold text-navy-deep">Hours</h3>
+                <p className="text-gray-600">Monday - Saturday: 9:00 AM - 8:00 PM</p>
               </div>
             </div>
           </div>
